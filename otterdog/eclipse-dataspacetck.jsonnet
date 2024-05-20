@@ -2,12 +2,6 @@ local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
 orgs.newOrg('eclipse-dataspacetck') {
   settings+: {
-    dependabot_alerts_enabled_for_new_repositories: false,
-    dependabot_security_updates_enabled_for_new_repositories: false,
-    dependency_graph_enabled_for_new_repositories: false,
-    members_can_change_project_visibility: false,
-    packages_containers_internal: false,
-    packages_containers_public: false,
     web_commit_signoff_required: false,
     workflows+: {
       actions_can_approve_pull_request_reviews: false,
