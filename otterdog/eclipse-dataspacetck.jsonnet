@@ -21,10 +21,10 @@ orgs.newOrg('eclipse-dataspacetck') {
       value: "pass:bots/technology.dataspacetck/gpg/secret-subkeys.asc",
     },
     orgs.newOrgSecret('OSSRH_PASSWORD') {
-      value: "pass:bots/technology.dataspacetck/oss.sonatype.org/api-token",
+      value: "pass:bots/technology.dataspacetck/oss.sonatype.org/password",
     },
     orgs.newOrgSecret('OSSRH_USERNAME') {
-      value: "pass:bots/technology.dataspacetck/oss.sonatype.org/api-username",
+      value: "pass:bots/technology.dataspacetck/oss.sonatype.org/username",
     },
   ],
   _repositories+:: [
