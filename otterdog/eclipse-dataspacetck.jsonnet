@@ -1,9 +1,16 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
+local newRepo(repoName) = orgs.newRepo(repoName) {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      dependabot_alerts_enabled: true,
+      private_vulnerability_reporting_enabled: true,
+      web_commit_signoff_required: false,
+};
+
 orgs.newOrg('eclipse-dataspacetck') {
   settings+: {
-    dependabot_security_updates_enabled_for_new_repositories: true,
-    dependabot_alerts_enabled_for_new_repositories: true,
     web_commit_signoff_required: false,
     workflows+: {
       actions_can_approve_pull_request_reviews: false,
@@ -30,14 +37,8 @@ orgs.newOrg('eclipse-dataspacetck') {
     },
   ],
   _repositories+:: [
-    orgs.newRepo('cvf') {
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_alerts_enabled: false,
+    newRepo('cvf') {
       description: "Compliance Verification Framework",
-      web_commit_signoff_required: false,
-      private_vulnerability_reporting_enabled: true
     },
   ],
 }
