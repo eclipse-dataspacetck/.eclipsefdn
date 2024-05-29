@@ -2,6 +2,8 @@ local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
 orgs.newOrg('eclipse-dataspacetck') {
   settings+: {
+    dependabot_security_updates_enabled_for_new_repositories: true,
+    dependabot_alerts_enabled_for_new_repositories: true,
     web_commit_signoff_required: false,
     workflows+: {
       actions_can_approve_pull_request_reviews: false,
@@ -35,6 +37,7 @@ orgs.newOrg('eclipse-dataspacetck') {
       dependabot_alerts_enabled: false,
       description: "Compliance Verification Framework",
       web_commit_signoff_required: false,
+      private_vulnerability_reporting_enabled: true
     },
   ],
 }
