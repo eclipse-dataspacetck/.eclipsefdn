@@ -1,0 +1,4 @@
+### Jsonnet template
+# Dependency directories
+vendor/
+.idea/
