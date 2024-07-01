@@ -16,7 +16,7 @@ orgs.newOrg('eclipse-dataspacetck') {
       actions_can_approve_pull_request_reviews: false,
     },
   },
-    secrets+: [
+  secrets+: [
     orgs.newOrgSecret('DOCKER_HUB_TOKEN') {
       value: "pass:bots/technology.dataspacetck/docker.com/api-token",
     },
@@ -30,10 +30,10 @@ orgs.newOrg('eclipse-dataspacetck') {
       value: "pass:bots/technology.dataspacetck/gpg/secret-subkeys.asc",
     },
     orgs.newOrgSecret('OSSRH_PASSWORD') {
-      value: "pass:bots/technology.dataspacetck/oss.sonatype.org/api-token",
+      value: "pass:bots/technology.dataspacetck/oss.sonatype.org/gh-token-password",
     },
     orgs.newOrgSecret('OSSRH_USERNAME') {
-      value: "pass:bots/technology.dataspacetck/oss.sonatype.org/api-username",
+      value: "pass:bots/technology.dataspacetck/oss.sonatype.org/gh-token-username",
     },
   ],
   _repositories+:: [
