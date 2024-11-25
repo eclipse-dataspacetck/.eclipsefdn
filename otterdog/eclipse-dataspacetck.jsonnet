@@ -51,7 +51,7 @@ orgs.newOrg('eclipse-dataspacetck') {
   _repositories+:: [
     newRepo('dsp-tck') {
       aliases: ['cvf'],
-      description: "Compliance Verification Framework",
+      description: "Technology Compatibility Kit for the Dataspace Protocol",
     },
     newRepo('dcp-tck'){
       description: "Technology Compatibility Kit for the Decentralized Claims Protocol"
