@@ -39,6 +39,75 @@ orgs.newOrg('eclipse-dataspacetck') {
   _repositories+:: [
     newRepo('cvf') {
       description: "Compliance Verification Framework",
+      has_discussions: true,
+      has_wiki: false,
+      allow_auto_merge: true,
+      allow_merge_commit: true,
+      private_vulnerability_reporting_enabled: true,
+      dependabot_alerts_enabled: true,
+      dependabot_security_updates_enabled: true,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          dismisses_stale_reviews: true,
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
     },
+    newRepo('dcp-tck'){
+      description: "Technology Compatibility Kit for the Decentralized Claims Protocol",
+      has_discussions: true,
+      has_wiki: false,
+      allow_auto_merge: true,
+      allow_merge_commit: true,
+      private_vulnerability_reporting_enabled: true,
+      dependabot_alerts_enabled: true,
+      dependabot_security_updates_enabled: true,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          dismisses_stale_reviews: true,
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
+    newRepo('tck-common'){
+      description: "Shared code for all Technology Compatibility Kits and other projects",
+      has_discussions: true,
+      has_wiki: false,
+      allow_auto_merge: true,
+      allow_merge_commit: true,
+      private_vulnerability_reporting_enabled: true,
+      dependabot_alerts_enabled: true,
+      dependabot_security_updates_enabled: true,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          dismisses_stale_reviews: true,
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    },
+    newRepo('tck-build'){
+      description: "Gradle Build customizations for the Technology Compatibility Kits",
+      has_discussions: true,
+      has_wiki: false,
+      allow_auto_merge: true,
+      allow_merge_commit: true,
+      private_vulnerability_reporting_enabled: true,
+      dependabot_alerts_enabled: true,
+      dependabot_security_updates_enabled: true,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          dismisses_stale_reviews: true,
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
+    }
   ],
 }
