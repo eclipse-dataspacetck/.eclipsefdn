@@ -13,8 +13,9 @@ local newRepo(repoName) = orgs.newRepo(repoName) {
       dependabot_security_updates_enabled: true,
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
-          dismisses_stale_reviews: true,
-          required_approving_review_count: 1,
+          allows_force_pushes: true,
+          dismisses_stale_reviews: false,
+          required_approving_review_count: 0,
           requires_status_checks: false,
           requires_strict_status_checks: true,
         },
