@@ -7,6 +7,18 @@ local newRepo(repoName) = orgs.newRepo(repoName) {
       dependabot_alerts_enabled: true,
       private_vulnerability_reporting_enabled: true,
       web_commit_signoff_required: false,
+      has_discussions: true,
+      has_wiki: false,
+      allow_auto_merge: true,
+      dependabot_security_updates_enabled: true,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          dismisses_stale_reviews: true,
+          required_approving_review_count: 1,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
 };
 
 orgs.newOrg('eclipse-dataspacetck') {
@@ -37,8 +49,18 @@ orgs.newOrg('eclipse-dataspacetck') {
     },
   ],
   _repositories+:: [
-    newRepo('cvf') {
-      description: "Compliance Verification Framework",
+    newRepo('dsp-tck') {
+      aliases: ['cvf'],
+      description: "Technology Compatibility Kit for the Dataspace Protocol",
     },
+    newRepo('dcp-tck'){
+      description: "Technology Compatibility Kit for the Decentralized Claims Protocol"
+    },
+    newRepo('tck-common'){
+      description: "Shared code for all Technology Compatibility Kits and other projects"
+    },
+    newRepo('tck-build'){
+      description: "Gradle Build customizations for the Technology Compatibility Kits"
+    }
   ],
 }
