@@ -11,8 +11,21 @@ local newRepo(repoName) = orgs.newRepo(repoName) {
       has_wiki: false,
       allow_auto_merge: true,
       dependabot_security_updates_enabled: true,
+      gh_pages_build_type: "legacy",
+      gh_pages_source_branch: "gh-pages",
+      gh_pages_source_path: "/",
+      squash_merge_commit_message: "PR_TITLE",
+      environments: [
+        orgs.newEnvironment('github-pages') {
+            branch_policies+: [
+                "gh-pages"
+            ],
+            deployment_branch_policy: "selected"
+        }
+      ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
+          requires_pull_request: false, //sometimes maintainers need to push to main
           allows_force_pushes: true,
           dismisses_stale_reviews: false,
           required_approving_review_count: 0,
