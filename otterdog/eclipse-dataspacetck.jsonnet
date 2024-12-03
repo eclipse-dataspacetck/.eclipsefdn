@@ -14,7 +14,6 @@ local newRepo(repoName) = orgs.newRepo(repoName) {
       gh_pages_build_type: "legacy",
       gh_pages_source_branch: "gh-pages",
       gh_pages_source_path: "/",
-      squash_merge_commit_message: "PR_TITLE",
       environments: [
         orgs.newEnvironment('github-pages') {
             branch_policies+: [
@@ -25,7 +24,6 @@ local newRepo(repoName) = orgs.newRepo(repoName) {
       ],
       branch_protection_rules: [
         orgs.newBranchProtectionRule('main') {
-          requires_pull_request: false, //sometimes maintainers need to push to main
           allows_force_pushes: true,
           dismisses_stale_reviews: false,
           required_approving_review_count: 0,
