@@ -22,15 +22,6 @@ local newRepo(repoName) = orgs.newRepo(repoName) {
             deployment_branch_policy: "selected"
         }
       ],
-      branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
-          allows_force_pushes: true,
-          dismisses_stale_reviews: false,
-          required_approving_review_count: 0,
-          requires_status_checks: false,
-          requires_strict_status_checks: true,
-        },
-      ],
 };
 
 orgs.newOrg('eclipse-dataspacetck') {
