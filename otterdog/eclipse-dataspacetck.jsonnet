@@ -1,5 +1,29 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
+local newRepo(repoName) = orgs.newRepo(repoName) {
+      allow_merge_commit: true,
+      allow_update_branch: false,
+      delete_branch_on_merge: false,
+      dependabot_alerts_enabled: true,
+      private_vulnerability_reporting_enabled: true,
+      web_commit_signoff_required: false,
+      has_discussions: true,
+      has_wiki: false,
+      allow_auto_merge: true,
+      dependabot_security_updates_enabled: true,
+      gh_pages_build_type: "legacy",
+      gh_pages_source_branch: "gh-pages",
+      gh_pages_source_path: "/",
+      environments: [
+        orgs.newEnvironment('github-pages') {
+            branch_policies+: [
+                "gh-pages"
+            ],
+            deployment_branch_policy: "selected"
+        }
+      ],
+};
+
 orgs.newOrg('eclipse-dataspacetck') {
   settings+: {
     web_commit_signoff_required: false,
@@ -34,97 +58,18 @@ orgs.newOrg('eclipse-dataspacetck') {
     },
   ],
   _repositories+:: [
-    orgs.newRepo('dcp-tck') {
-      allow_auto_merge: true,
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
-      description: "Technology Compatibility Kit for the Decentralized Claims Protocol",
-      gh_pages_build_type: "legacy",
-      gh_pages_source_branch: "gh-pages",
-      gh_pages_source_path: "/",
-      has_discussions: true,
-      has_wiki: false,
-      private_vulnerability_reporting_enabled: true,
-      web_commit_signoff_required: false,
-      environments: [
-        orgs.newEnvironment('github-pages') {
-          branch_policies+: [
-            "gh-pages"
-          ],
-          deployment_branch_policy: "selected",
-        },
-      ],
-    },
-    orgs.newRepo('dsp-tck') {
-      allow_auto_merge: true,
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
+    newRepo('dsp-tck') {
+      aliases: ['cvf'],
       description: "Technology Compatibility Kit for the Dataspace Protocol",
-      gh_pages_build_type: "legacy",
-      gh_pages_source_branch: "gh-pages",
-      gh_pages_source_path: "/",
-      has_discussions: true,
-      has_wiki: false,
-      private_vulnerability_reporting_enabled: true,
-      web_commit_signoff_required: false,
-      environments: [
-        orgs.newEnvironment('github-pages') {
-          branch_policies+: [
-            "gh-pages"
-          ],
-          deployment_branch_policy: "selected",
-        },
-      ],
     },
-    orgs.newRepo('tck-build') {
-      allow_auto_merge: true,
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
-      description: "Gradle Build customizations for the Technology Compatibility Kits",
-      gh_pages_build_type: "legacy",
-      gh_pages_source_branch: "gh-pages",
-      gh_pages_source_path: "/",
-      has_discussions: true,
-      has_wiki: false,
-      private_vulnerability_reporting_enabled: true,
-      web_commit_signoff_required: false,
-      environments: [
-        orgs.newEnvironment('github-pages') {
-          branch_policies+: [
-            "gh-pages"
-          ],
-          deployment_branch_policy: "selected",
-        },
-      ],
+    newRepo('dcp-tck'){
+      description: "Technology Compatibility Kit for the Decentralized Claims Protocol"
     },
-    orgs.newRepo('tck-common') {
-      allow_auto_merge: true,
-      allow_merge_commit: true,
-      allow_update_branch: false,
-      delete_branch_on_merge: false,
-      dependabot_security_updates_enabled: true,
-      description: "Shared code for all Technology Compatibility Kits and other projects",
-      gh_pages_build_type: "legacy",
-      gh_pages_source_branch: "gh-pages",
-      gh_pages_source_path: "/",
-      has_discussions: true,
-      has_wiki: false,
-      private_vulnerability_reporting_enabled: true,
-      web_commit_signoff_required: false,
-      environments: [
-        orgs.newEnvironment('github-pages') {
-          branch_policies+: [
-            "gh-pages"
-          ],
-          deployment_branch_policy: "selected",
-        },
-      ],
+    newRepo('tck-common'){
+      description: "Shared code for all Technology Compatibility Kits and other projects"
     },
+    newRepo('tck-build'){
+      description: "Gradle Build customizations for the Technology Compatibility Kits"
+    }
   ],
 }
