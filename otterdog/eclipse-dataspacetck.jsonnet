@@ -24,7 +24,7 @@ local newRepo(repoName) = orgs.newRepo(repoName) {
       ],
 };
 
-orgs.newOrg('eclipse-dataspacetck') {
+orgs.newOrg('technology.dataspacetck', 'eclipse-dataspacetck') {
   settings+: {
     web_commit_signoff_required: false,
     workflows+: {
