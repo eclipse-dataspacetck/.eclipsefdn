@@ -65,6 +65,9 @@ orgs.newOrg('technology.dataspacetck', 'eclipse-dataspacetck') {
     newRepo('dcp-tck'){
       description: "Technology Compatibility Kit for the Decentralized Claims Protocol"
     },
+    newRepo('dps-tck'){
+      description: "Technology Compatibility Kit for the Dataplane Signaling Protocol"
+    },
     newRepo('tck-common'){
       description: "Shared code for all Technology Compatibility Kits and other projects"
     },
